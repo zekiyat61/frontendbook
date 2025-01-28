@@ -12,7 +12,9 @@ const SignUp = () => {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-  
+  console.log('====================================');
+  console.log(`${import.meta.env.VITE_SERVER_URL}/user/signup`);
+  console.log('====================================');
     // Basic validation
     if (!username || !email || !password) {
       enqueueSnackbar("All fields are required", { variant: "error" });
