@@ -24,6 +24,9 @@ const SignUp = () => {
       enqueueSnackbar("Sign Up Successfully", { variant: "success" });
       setsignup(true)
     } catch (error) {
+      console.log('====================================');
+      console.log(error);
+      console.log('====================================');
       if (error.response && error.response.data) {
         // Handle specific error messages
         enqueueSnackbar(error.response.data.message || "Sign Up failed", { variant: "error" });
