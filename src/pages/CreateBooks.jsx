@@ -1,7 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { SERVER_URL } from "../global";
 import BackButton from "../component/BackButton";
 import { useSnackbar } from "notistack";
 const CreateBooks = () => {
@@ -21,7 +20,7 @@ const CreateBooks = () => {
       image: base64Image,
     };
     axios
-      .post(`${SERVER_URL}/book`, data, {
+      .post(`${import.meta.env.VITE_SERVER_URL}/book`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

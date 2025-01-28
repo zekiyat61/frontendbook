@@ -2,7 +2,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import BackButton from "../component/BackButton";
-import { SERVER_URL } from "../global";
 
 const ShowBook = () => {
   const [book, setBook] = useState(null); // Initialize as null to handle loading state
@@ -13,7 +12,7 @@ const ShowBook = () => {
 
   useEffect(() => {
     axios
-      .get(`${SERVER_URL}/book/${id}`, {
+      .get(`${import.meta.env.VITE_SERVER_URL}/book/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {

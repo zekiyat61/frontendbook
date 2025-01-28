@@ -4,7 +4,6 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { RiAddBoxFill } from "react-icons/ri";
 import BookTable from "../component/BookTable";
-import { SERVER_URL } from "../global";
 const Home = () => {
   const [books, setbooks] = useState([]);
 
@@ -22,7 +21,7 @@ const Home = () => {
   };
   useEffect(() => {
     axios
-      .get(`${SERVER_URL}/book`, {
+      .get(`${import.meta.env.VITE_SERVER_URL}/book`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((Response) => {

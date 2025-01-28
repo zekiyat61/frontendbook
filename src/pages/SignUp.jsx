@@ -1,19 +1,18 @@
 import { useState } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useSnackbar } from "notistack";
-import { SERVER_URL } from "../global";
 
 const SignUp = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
+  const [signup, setsignup] = useState(false);
   const { enqueueSnackbar } = useSnackbar();
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-
+  
     // Basic validation
     if (!username || !email || !password) {
       enqueueSnackbar("All fields are required", { variant: "error" });
@@ -21,9 +20,9 @@ const SignUp = () => {
     }
 
     try {
-      await axios.post(`${SERVER_URL}/user/signup`, { username, email, password });
+      await axios.post(`${import.meta.env.VITE_SERVER_URL}/user/signup`, { username, email, password });
       enqueueSnackbar("Sign Up Successfully", { variant: "success" });
-      navigate("/");
+      setsignup(true)
     } catch (error) {
       if (error.response && error.response.data) {
         // Handle specific error messages
@@ -79,6 +78,14 @@ const SignUp = () => {
               autoComplete="new-password"
             />
           </div>
+        {
+          signup &&
+            <p style={{
+              textAlign:"center",
+              color:"blue",
+              fontSize:"25px"
+            }}>Verfication email sent to your email</p>
+        }
           <button className="btn btn-primary mt-3" type="submit">
             Sign Up
           </button>

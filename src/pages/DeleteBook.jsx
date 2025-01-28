@@ -1,7 +1,5 @@
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-import React from "react";
-import { SERVER_URL } from "../global";
 import BackButton from "../component/BackButton";
 import { useSnackbar } from "notistack";
 
@@ -21,7 +19,7 @@ const DeleteBook = () => {
     }
 
     axios
-      .delete(`${SERVER_URL}/book/${id}`, {
+      .delete(`${import.meta.env.VITE_SERVER_URL}/book/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(() => {

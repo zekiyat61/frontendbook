@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import BackButton from "../component/BackButton";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-import { SERVER_URL } from "../global";
 import { useSnackbar } from "notistack";
 
 
@@ -20,7 +19,7 @@ const EditBook = () => {
 
   useEffect(() => { 
     axios
-      .get(`${SERVER_URL}/book/${id}`, {
+      .get(`${import.meta.env.VITE_SERVER_URL}/book/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
@@ -40,7 +39,7 @@ const EditBook = () => {
       publishYear,
     };
     axios
-      .put(`${SERVER_URL}/book/${id}`, data, {
+      .put(`${import.meta.env.VITE_SERVER_URL}/book/${id}`, data, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(() => {

@@ -3,7 +3,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
 import { Link } from "react-router-dom";
-import { SERVER_URL } from "../global";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -13,18 +12,18 @@ const Login = () => {
 
   const handleLogin = () => {
     axios
-      .post(`${SERVER_URL}/user/login`, { username, password })
+      .post(`${import.meta.env.VITE_SERVER_URL}/user/login`, { username, password })
       .then((response) => {
         const { username } = response.data;
         console.log("Username:", username);
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("user", response.data.username);
-        enqueueSnackbar("Login Successfully", { variant: "success" });
+        enqueueSnackbar("Login Successfully " , { variant: "success" });
         navigate("/home", { state: { username } });
       })
       .catch((error) => {
-        enqueueSnackbar("Login failed", { variant: "error" });
-        console.error(error);
+        enqueueSnackbar("Login failed "+error.response.data.message, { variant: "error" });
+        console.error(error.response.data.message);
       });
   };
   return (
