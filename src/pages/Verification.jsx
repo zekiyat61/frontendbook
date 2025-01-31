@@ -1,9 +1,17 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const Verification = () => {
   const [loading, setLoading] = useState(true);
   const location = useLocation();
+  const navigate = useNavigate();
+
+
+  const goToHome = () => {
+    navigate("/home"); 
+  };
+
 
   // Function to get query parameters
   const getQueryParams = () => {
@@ -41,6 +49,7 @@ const Verification = () => {
     <div>
       <h1>Verification Process Completed</h1>
       <p>Please check your email for confirmation.</p>
+      <button onClick={goToHome}>Go to Home</button>
     </div>
   );
 };
