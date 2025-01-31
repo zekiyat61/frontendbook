@@ -83,14 +83,6 @@ const SignUp = () => {
               autoComplete="new-password"
             />
           </div>
-        {
-          signup &&
-            <p style={{
-              textAlign:"center",
-              color:"blue",
-              fontSize:"25px"
-            }}>Verfication email sent to your email</p>
-        }
           <button className="btn btn-primary mt-3" type="submit">
             Sign Up
           </button>
