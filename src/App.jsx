@@ -6,6 +6,7 @@ import EditBook from "./pages/EditBook";
 import DeleteBook from "./pages/DeleteBook";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import Verification from "./pages/Verification";
 const App = () => {
   return (
     <BrowserRouter>
@@ -17,7 +18,7 @@ const App = () => {
         <Route path="/book/details/:id" element={<ShowBook />} />
         <Route path="/book/edit/:id" element={<EditBook />} />
         <Route path="/book/delete/:id" element={<DeleteBook />} />
-        <Route path="/book/Verification" element={Verification} />
+        <Route path="/user/verify" element={<Verification/>} />
       </Routes>
     </BrowserRouter>
   );
